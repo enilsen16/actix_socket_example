@@ -1,3 +1,4 @@
+use std::str;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
     Arc,
@@ -48,7 +49,8 @@ async fn main() -> io::Result<()> {
                             // more bytes to process
                             Ok(bytes_read) => {
                                 info!("[{}] read {} bytes", num, bytes_read);
-                                stream.write_all(&buf[size..]).await.unwrap();
+                                info!("{:?}", str::from_utf8(&buf[size..]).unwrap());
+                                // stream.write_all(&buf[size..]).await.unwrap();
                                 size += bytes_read;
                             }
 
@@ -71,7 +73,7 @@ async fn main() -> io::Result<()> {
                 ok(size)
             })
         })?
-        .workers(1)
+        .workers(4)
         .run()
         .await
 }
