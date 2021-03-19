@@ -7,11 +7,6 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-server = "2.0.0-beta.3"
 actix-rt = "2.1.0"
-actix-service = "2.0.0-beta.5"
-log = "0.4"
-bytes = "1"
-env_logger = "0.8"
-futures-util = { version = "0.3.7", default-features = false, features = ["sink"] }
 tokio = {version = "1.3", features = ["full"]}
+tempfile = "3.2"
